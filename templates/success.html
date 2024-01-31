@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block container %}
+
+<head>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px; /* Add margin to the top */
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 12px; /* Add padding to th and td */
+        }
+
+        th {
+            background-color: #f2f2f2; /* Add background color to th */
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9; /* Add alternate row background color */
+        }
+    </style>
+</head>
+<h1>The following schema was added: </h1>
+
+<h4>Schema Title: <b>{{ schemaData.title }}</b></h4>
+<h4>Schema Description: <b>{{ schemaData.description }}</b></h4>
+
+<table border="1">
+    <tr>
+        <th>Property Name: </th>
+        <th>Property Type: </th>
+        <th>Property Description: </th>
+    </tr>
+    {% for instance in propertyData %}
+    <tr>
+        <td>{{instance.propertyTitle}}</td>
+        <td>{{instance.propertyDescription}}</td>
+        <td>{{instance.propertyRequired}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<button class="col-12 btn btn-success" onclick="redirectToHomePage()">Home Page</button>
+{% endblock %}
+{% block custom_js %}
+<script>
+    function redirectToHomePage() {
+        window.location.href = "/home";
+    }
+</script>
+{% endblock %}
