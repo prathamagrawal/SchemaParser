@@ -1,6 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from .forms import SchemaModelForm,PropertiesFormset
 from .models.properties import PropertiesModel
+from django.http import HttpResponse
 
 def create_schema_model(request):
     if request.method == 'GET':
@@ -16,7 +17,12 @@ def create_schema_model(request):
             for form in formset_instance:
                 form.schemaDetails = schemaData
                 form.save()
-            return render(request, 'success.html',{'schemaData':schemaData,'propertyData':formset_instance})
+
+            data = schemaform.cleaned_data
+            property=formset.cleaned_data
+            data['properties'] = {property_item['propertyTitle']: property_item for property_item in property}
+            print(data)
+            return render(request, 'success.html',{'schemaData':schemaData,'propertyData':formset_instance,'jsonResponse':data})
 
     return render(request, 'create_schema.html', {
         'schemaform': schemaform,

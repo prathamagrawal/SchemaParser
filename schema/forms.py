@@ -29,7 +29,7 @@ class SchemaModelForm(forms.ModelForm):
 
 PropertiesFormset = modelformset_factory(
     PropertiesModel,
-    fields=('propertyTitle','propertyDescription','propertyRequired',),
+    fields=('propertyTitle','propertyDescription','propertyDataType','propertyRequired',),
     extra=1,
     widgets={
         'propertyTitle': forms.TextInput(attrs={
@@ -40,9 +40,12 @@ PropertiesFormset = modelformset_factory(
             'class': 'form-control',
             'placeholder': 'Enter Property Description here'
         }),
-        'propertyRequired': forms.TextInput(attrs={
+        'propertyDataType': forms.Select(attrs={
             'class': 'form-control',
-            'placeholder': 'Enter Property Status here'
-        })
+        }),
+        'propertyRequired': forms.CheckboxInput(attrs={
+            'class': 'form-check-input',
+            'placeholder': 'Select if the field is required: '
+        }),
     }
 )
