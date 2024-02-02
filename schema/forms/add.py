@@ -1,8 +1,8 @@
 from django import forms
 from django.forms import modelformset_factory
 
-from .models.schema import SchemaModel
-from .models.properties import PropertiesModel
+from ..models.schema import SchemaModel
+from ..models.properties import PropertiesModel
 
 
 class SchemaModelForm(forms.ModelForm):

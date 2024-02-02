@@ -8,4 +8,4 @@ class SchemaModel(models.Model):
         return f"{self.title}"
     
     def getProperties(self):
-        return ', '.join(self.properties.all().values_list('title', flat=True))
+        return ', '.join(self.properties.all().values_list('propertyTitle', flat=True))

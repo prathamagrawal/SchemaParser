@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from .forms import SchemaModelForm,PropertiesFormset
-from .models.properties import PropertiesModel
-from django.http import HttpResponse
+from ..forms.add import SchemaModelForm,PropertiesFormset
+from ..models.properties import PropertiesModel
+
 
 def create_schema_model(request):
     if request.method == 'GET':

@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block container %}
+
+<style>
+        /* Add this CSS for styling your form */
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 600px;
+        margin: 50px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        color: #333;
+    }
+
+    form {
+        margin-top: 20px;
+        margin-right:50px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+        color: #555;
+    }
+
+    select,
+    input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+        background-color: #4caf50;
+        color: #fff;
+        cursor: pointer;
+        font-size: 16px;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+
+</style>
+
+<h3>Select and Upload the Json file:  </h3>
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}  
+    <label for="selectSchema">Select a Valid Schema:</label>
+    <select id="selectSchema" name="selectSchema">
+        {% for item in details %}
+        <option value=  "{{ item.title }}" >{{ item.title }}</option>
+        {% endfor %}
+    </select>
+    <label for="fileUpload">Upload a File:</label>
+    <input type="file" id="uploadedFile" name="uploadedFile" accept=".json">
+
+    <br>
+    <input type="submit" value="Submit">
+</form>
+
+
+{% endblock %}
