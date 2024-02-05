@@ -20,5 +20,5 @@ class PropertiesModel(models.Model):
     propertyDataType=models.CharField(max_length=20,choices=dataTypes,default='str')
     propertyRequired=models.BooleanField(default=False)
 
-
-    
+    def __str__(self):
+        return f"{self.propertyTitle}"

@@ -1,6 +1,6 @@
-{% extends "base.html" %} {% block container %} {% if heading %}
-<h3>{{heading}}</h3>
-{% endif %}
+{% extends "base.html" %} {% block container %} 
+
+<!-- <md-block></md-block> -->
 <form class="form-horizontal" method="POST" action="">
     {% csrf_token %}
     <div class="row spacer">

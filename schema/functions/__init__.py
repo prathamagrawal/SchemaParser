@@ -1,5 +1,5 @@
-from .upload import handle_uploaded_file
+from .upload import handleUploadFile
 
 __all__=[
-    handle_uploaded_file
+    handleUploadFile
 ]

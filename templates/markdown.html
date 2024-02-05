@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block container %}
+
+    <head>
+        <style>
+            .markdown-div {
+                background-color: #f0f8ff; /* Light Blue color, you can adjust as needed */
+                border: 1px solid #4682b4; /* Border color */
+                padding: 10px;
+                margin-bottom: 20px;
+            }
+        </style>
+    </head>
+
+    <div class="container mt-4">
+        <h2 class="text-success">File Successfully Validated</h2>
+        <h3>Preview:</h3>
+
+        <div class="markdown-div p-3">
+            <md-block>
+                {{ markdownContent }}
+            </md-block>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-md-6 mb-2">
+                <button class="btn btn-block btn-outline-primary" onclick="redirectToHomePage()">Home Page</button>
+            </div>
+            <div class="col-md-6 mb-2">
+                <button class="btn btn-block btn-primary" onclick="downloadMarkdown()">Download Markdown</button>
+            </div>
+        </div>
+    </div>
+
+    {{ markdownContent|json_script:"markdownContent" }}
+
+{% endblock %}
+
+{% block custom_js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.js"></script>
+
+<script>
+    function redirectToHomePage() {
+        window.location.href = "/";
+    }
+
+    function downloadMarkdown() {
+        var dict = JSON.parse(document.getElementById('markdownContent').textContent);
+        var fileToSave = new Blob([JSON.stringify(dict)], {
+            type: 'application/md'
+        });
+        saveAs(fileToSave, "output.md");
+    }
+</script>
+{% endblock %}

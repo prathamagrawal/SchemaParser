@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block container %}
+    <h2 class="text-danger">File Upload Failed</h2>
+
+    <div class="container">
+        <div class="alert alert-danger">
+            <h3>The following errors were encountered during the file validation:</h3>
+            <ul class="list-group">
+                {% for item in errors %}
+                    <li class="list-group-item">{{ item }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <button class="btn btn-block btn-danger mt-3" onclick="redirectToUploadPage()">Retry</button>
+
+{% endblock %}
+
+{% block custom_js %}
+    <script>
+        function redirectToUploadPage() {
+            window.location.href = "/upload";
+        }
+    </script>
+{% endblock %}
