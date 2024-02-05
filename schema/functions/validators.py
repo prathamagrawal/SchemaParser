@@ -1,4 +1,5 @@
 def validateUser(schema,data):
+    data={key.lower(): value for key, value in data.items()}
     errors=[]
     isValid=True
     for key,value in schema.items():

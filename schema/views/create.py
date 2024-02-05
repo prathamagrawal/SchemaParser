@@ -22,7 +22,6 @@ def create_schema_model(request):
             propertyFormResponse=formset.cleaned_data
             properties = [{key: value for key, value in item.items() if key not in ['id']} for item in propertyFormResponse]
             data['properties'] = properties
-            print(data)
             return render(request, 'success.html',{'schemaData':schemaData,'propertyData':formset_instance,'jsonResponse':data})
 
     return render(request, 'create_schema.html', {

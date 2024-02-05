@@ -22,3 +22,8 @@ class PropertiesModel(models.Model):
 
     def __str__(self):
         return f"{self.propertyTitle}"
+    
+    def save(self, *args, **kwargs):
+        self.propertyTitle = self.propertyTitle.lower()
+        self.propertyDescription = self.propertyDescription.lower()
+        return super(PropertiesModel, self).save(*args, **kwargs)
