@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block container %}
+
+<style>
+    /* Styling for form elements */
+    .form-horizontal {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+        font-weight: bold;
+        margin-bottom: 10px;
+        display: block;
+    }
+
+    select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    .spacer {
+        margin-top: 20px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        color: #fff;
+    }
+</style>
+
+<form class="form-horizontal" method="POST" action="">
+    {% csrf_token %}
+    <label for="selectSchema">Select a Valid Schema to add or remove Properties:</label>
+    <select id="selectSchema" name="selectSchema" class="form-control">
+        {% for item in details %}
+        <option value="{{ item.title }}">{{ item.title }}</option>
+        {% endfor %}
+    </select>
+    <div class="row spacer">
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary btn-block">Update Schema</button>
+        </div>
+    </div>
+</form>
+
+{% endblock %}

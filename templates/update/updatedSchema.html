@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block container %}
+
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+        }
+
+        h2, h4 {
+            margin-top: 0; /* Remove default margin for headings */
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 12px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .btn {
+            display: block; /* Make button a block element */
+            width: 100%; /* Take up full width */
+            padding: 10px 20px; /* Adjust padding */
+            margin-top: 20px; /* Add margin */
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Schema Selected:</h2>
+<h4>Schema Title: <b>{{ schemaData.title }}</b></h4>
+<h4>Schema Description: <b>{{ schemaData.description }}</b></h4>
+
+<h4>{{ message }}</h4>
+
+<table>
+    <tr>
+        <th>Property Name</th>
+        <th>Property Description</th>
+        <th>Property DataType</th>
+        <th>Property Required</th>
+    </tr>
+    {% for instance in propertyData %}
+    <tr>
+        <td>{{instance.propertyTitle}}</td>
+        <td>{{instance.propertyDescription}}</td>
+        <td>{{instance.propertyDataType}}</td>
+        <td>{{instance.propertyRequired}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<button class="btn" onclick="redirectToHomePage()">Home Page</button>
+
+</body>
+
+{% endblock %}
+{% block custom_js %}
+<script>
+    function redirectToHomePage() {
+        window.location.href = "/";
+    }
+</script>
+{% endblock %}

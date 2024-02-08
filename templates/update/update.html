@@ -58,22 +58,23 @@
     }
 </style>
 
+<h3> Following Schema has been selected: <b>{{ selectSchema }}</b> </h3><br>
+
 <form class="form-horizontal" method="POST" action="">
     {% csrf_token %}
-    <label for="selectSchema">Select a Valid Schema:</label>
-    <select id="selectSchema" name="selectSchema">
-        {% for item in details %}
-        <option value="{{ item.title }}">{{ item.title }}</option>
-        {% endfor %}
-    </select>
-
     <label for="add">Add</label>
     <select id="add" name="add">
         <option value="no">No</option>
         <option value="yes">Yes</option>
     </select>
 
-    <div id="additionalSection" class="form-horizontal add" style="display: none;">
+    <label for="delete">Delete</label>
+    <select id="delete" name="delete">
+        <option value="no">No</option>
+        <option value="yes">Yes</option>
+    </select>
+
+    <div id="addSection" class="form-horizontal add" style="display: none;">
         {{ formset.management_form }}
         {% for form in formset %}
         <div class="row form-row spacer">
@@ -97,15 +98,26 @@
                     </div>
                 </div>
             </div>
-
             <button class="col-12 btn btn-success add-form-row">+</button>
         </div>
         {% endfor %}
     </div>
 
-    <div class="row spacer">
+    <div id="deleteSection" class="form-horizontal" style="display: none;">
+        {% for item in selectedProperties %}
+        <div class="form-group">
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="{{ item.propertyTitle }}" name="checks[]" value="{{ item.propertyTitle }}">
+                <label class="custom-control-label" for="{{ item.propertyTitle }}">{{ item.propertyTitle }}</label>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+
         <div class="col-4 offset-2">
-            <button type="submit" class="btn btn-block btn-primary">Create</button>
+            <button type="submit" class="btn btn-block btn-success"
+                onclick="return redirectToSuccessPage()">Update</button>
         </div>
     </div>
 </form>
@@ -115,16 +127,28 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
     crossorigin="anonymous"></script>
+
 <script type="text/javascript">
-    $(document).ready(function() {
-        $('#add').change(function() {
+    $(document).ready(function () {
+        $('#add').change(function () {
             if ($(this).val() === 'yes') {
-                $('#additionalSection').show();
+                $('#addSection').show();
             } else {
-                $('#additionalSection').hide();
+                $('#addSection').hide();
             }
         });
     });
+
+    $(document).ready(function () {
+        $('#delete').change(function () {
+            if ($(this).val() === 'yes') {
+                $('#deleteSection').show();
+            } else {
+                $('#deleteSection').hide();
+            }
+        });
+    });
+
 
     function updateElementIndex(el, prefix, ndx) {
         var id_regex = new RegExp("(" + prefix + "-\\d+)");
@@ -197,5 +221,11 @@
         deleteForm("form", $(this));
         return false;
     });
+
+
+    function redirectToSuccessPage() {
+        window.location.href = "/success";
+    }
+
 </script>
 {% endblock %}
