@@ -3,7 +3,7 @@ from ..forms.add import SchemaModelForm,PropertiesFormset
 from ..models.properties import PropertiesModel
 
 
-def create_schema_model(request):
+def create(request):
     if request.method == 'GET':
         schemaform = SchemaModelForm(request.GET or None)
         formset = PropertiesFormset(queryset=PropertiesModel.objects.none())
@@ -24,7 +24,7 @@ def create_schema_model(request):
             data['properties'] = properties
             return render(request, 'success.html',{'schemaData':schemaData,'propertyData':formset_instance,'jsonResponse':data})
 
-    return render(request, 'create_schema.html', {
+    return render(request, 'create.html', {
         'schemaform': schemaform,
         'formset': formset,
     })

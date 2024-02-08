@@ -18,6 +18,7 @@ def upload(request):
             return render(request,'markdown.html',{'markdownContent':markdownContent}) #TODO: Make the html pages for success and retry.
         else:
             return render(request,'retry.html',{'errors':errors})
+    
     return render(request,'upload.html',{"details":SchemaModel.objects.all()})
 
 
