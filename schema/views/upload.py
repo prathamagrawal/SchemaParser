@@ -15,10 +15,10 @@ def upload(request):
         flag,errors=validateUser(schemaData['properties'],data)
         if(flag and len(errors)==0):
             markdownContent=createMarkdown(data) 
-            return render(request,'markdown.html',{'markdownContent':markdownContent}) #TODO: Make the html pages for success and retry.
+            return render(request,'upload/markdown.html',{'markdownContent':markdownContent}) #TODO: Make the html pages for success and retry.
         else:
-            return render(request,'retry.html',{'errors':errors})
+            return render(request,'upload/retry.html',{'errors':errors})
     
-    return render(request,'upload.html',{"details":SchemaModel.objects.all()})
+    return render(request,'upload/upload.html',{"details":SchemaModel.objects.all()})
 
 
