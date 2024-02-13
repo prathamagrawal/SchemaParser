@@ -34,7 +34,41 @@ This tool provides a user-friendly interface powered by Django for managing JSON
 
 <hr>
 
-## Usage 
+## Setup 🚀
+### Prerequisites:
+Make sure python3.9 is installed. Check the version of the python installed using 
+```
+python --version
+```
+
+Steps to get the application running:
+1. Clone the repository:
+   ```
+   git clone https://github.com/prathamagrawal/SchemaParser.git
+   cd SchemaParser
+   ```
+2. Make Migrations:
+   ```
+   python manage.py makemigrations
+   python manage.py migrate
+   ```  
+3. Collect the static files
+   ```
+   python manage.py collectstatic
+   ```
+4. Create Superuser
+   ```
+   python manage.py createsuperuser
+   ```
+6. Run the server
+   ```
+   python manage.py runserver
+   ```
+
+
+<hr>
+
+## Usage 📍
 
 ### 1. Schema Creation
 A user can create a schema using the add schema option. Multiple properties can be added and removed. Customizations can be made for their respective datatypes and whether they are used or not.
