@@ -1,4 +1,4 @@
-<img width="1440" alt="Screenshot 2024-02-13 at 12 04 15" src="https://github.com/prathamagrawal/JsonSchemaAPI/assets/58286330/9870acc6-439a-44c2-bed9-58c9a90a48af"><h1 align="center">Schema Parser</h1>
+<h1 align="center">Schema Parser</h1>
 <img width="1376" alt="Screenshot 2024-02-13 at 11 41 52" src="https://github.com/prathamagrawal/JsonSchemaAPI/assets/58286330/a089e296-d1d4-4440-95d6-71a6d4b15ecf">
 
 ## Description 📍
