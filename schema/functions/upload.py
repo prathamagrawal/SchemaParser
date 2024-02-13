@@ -32,7 +32,7 @@ def querySchema(name):
 def createMarkdown(data,outFile="output.md"):
 
         markdownContent=""""""
-        markdownContent+="# testing \n\n"
+        markdownContent+="# MarkDown File: \n\n"
 
         try:
             for key,value in data.items():
