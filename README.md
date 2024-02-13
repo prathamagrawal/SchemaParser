@@ -47,16 +47,20 @@ Steps to get the application running:
    git clone https://github.com/prathamagrawal/SchemaParser.git
    cd SchemaParser
    ```
-2. Make Migrations:
+2. Install requirements.txt
+   ```
+   pip install -r requirements.txt
+   ```
+3. Make Migrations:
    ```
    python manage.py makemigrations
    python manage.py migrate
    ```  
-3. Collect the static files
+4. Collect the static files
    ```
    python manage.py collectstatic
    ```
-4. Create Superuser
+5. Create Superuser
    ```
    python manage.py createsuperuser
    ```
@@ -118,16 +122,3 @@ A user can add or delete properties in a schema, and later the final updated sch
 <img width="1440" alt="Screenshot 2024-02-13 at 12 04 41" src="https://github.com/prathamagrawal/JsonSchemaAPI/assets/58286330/97620dfe-c21c-409e-aba6-f3684b33d1e2">
 
 <hr>
-
-
-
-
-
-
-
-
-
-
-
-
-
