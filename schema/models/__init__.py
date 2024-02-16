@@ -1,7 +1,4 @@
 from .schema import SchemaModel
-from .properties import PropertiesModel    
+from .properties import PropertiesModel
 
-__all__=[
-    SchemaModel,
-    PropertiesModel
-]
+__all__ = [SchemaModel, PropertiesModel]
